@@ -10,19 +10,25 @@ public class ComputadoraPrecio {
         Scanner leer= new Scanner(System.in);     
  
         double precio;
+        
         System.out.println("El precio de la computadora es: $ ");
          precio = leer.nextDouble();   
          
          double iva = 0.13;
          double desc= 0.15;
-         double ttalprecio, ttaliva, ttaldesc, tIVA;
          
+        double TOTAL= ComputadoraPrecio.TP(iva, desc, precio);
+        System.out.println("El precio de su computadora es: $ " + TOTAL);
+        
+    }
+    
+    public static double TP ( double iva, double desc, double precio){
+        double ttalprecio, ttaliva, ttaldesc, tIVA;
+        
         ttaliva= precio * iva ;
         tIVA= precio + ttaliva;
         ttaldesc= tIVA * desc;
         ttalprecio = tIVA - ttaldesc;
-        
-        System.out.println("El precio de su computadora es: $ " + ttalprecio);
-        
+        return ttalprecio;
     }
 }

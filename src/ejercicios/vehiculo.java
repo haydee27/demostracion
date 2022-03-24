@@ -6,8 +6,7 @@ import java.io.InputStreamReader;
 
 public class vehiculo {
     public static void main(String[] args){
-        
-        double  Depre, DAI;
+    
         double VA=0, VF=0, VS=0;
         //CREAR EL OBJETO PARA LLAMAR A LAS CLASES 
         
@@ -25,18 +24,23 @@ public class vehiculo {
         }
         
         
-        //proceso para sacar la depreciacion del vehiculo
-         Depre= VA * 0.10;
-         
-         //Proceso para sacar el monto de DAI
-         
-         DAI = (VA - Depre - VF - VS) * 0.25;
-        
+        double D = vehiculo.D(VA);
         
         System.out.println( "El valor de su vehiculo es: $" + VA );
-        System.out.println("El costo de depreciacion es : $" + Depre);
+        System.out.println("El costo de depreciacion es : $" + D);
         System.out.println("El costo por fletes es: $ " + VF);
         System.out.println("El costo por seguro es: $" +VS);
-        System.out.println("El derecho arancelario a la importacion de su vehiculo es:$ " + DAI);
+        System.out.println("El derecho arancelario a la importacion de su vehiculo es:$ " + vehiculo.dai(VA,D, VF, VS));
+    }
+    public static double D( double VA){
+        //proceso para sacar la depreciacion del vehiculo
+        double  Depre= VA * 0.10;
+        return Depre;
+    }
+    
+    public static double dai ( double VA, double D, double VF, double VS){
+       double  DAI = (VA - D - VF - VS) * 0.25;
+        
+        return DAI;
     }
 }
